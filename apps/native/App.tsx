@@ -1,11 +1,11 @@
-import {NavigationContainer} from "@react-navigation/native";
-import {SafeAreaProvider} from "react-native-safe-area-context";
-import {useEffect, useState} from "react";
-import {loadAsync} from "expo-font"
-import {createStackNavigator} from "@react-navigation/stack";
-import {AuthMainScreen} from "./screens/auth/AuthMainScreen";
-import {MainContainer} from "./navigation/MainContainer";
-import {Text} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { useEffect, useState } from "react";
+import { loadAsync } from "expo-font";
+import { createStackNavigator } from "@react-navigation/stack";
+import { AuthMainScreen } from "./screens/auth/AuthMainScreen";
+import { RootContainer } from "./navigation/RootContainer";
+import { Text } from "react-native";
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -16,7 +16,7 @@ export default function App() {
       try {
         await loadAsync({
           Inter: require("./assets/fonts/Inter_variable.ttf")
-        })
+        });
       } catch (e) {
         console.error(e);
       } finally {
@@ -25,23 +25,21 @@ export default function App() {
     })();
   }, []);
 
-  // if (!appIsReady) {
-  //   return null;
-  // }
+  if (!appIsReady) {
+    return null;
+  }
 
   const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
           {!loggedIn ? (
-            <Stack.Screen name="Auth">
-              {() => <AuthMainScreen/>}
-            </Stack.Screen>
+            <Stack.Screen name="Auth">{() => <AuthMainScreen />}</Stack.Screen>
           ) : (
             <Stack.Screen name="MainContainer">
-              {() => <MainContainer/>}
+              {() => <RootContainer />}
             </Stack.Screen>
           )}
         </Stack.Navigator>

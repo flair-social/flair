@@ -20,7 +20,7 @@ import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs/lib/ty
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { COLORS } from "../core/const";
 
-export function MainContainer() {
+export function RootContainer() {
   const Tab = createBottomTabNavigator();
   const insets = useSafeAreaInsets();
 
