@@ -7,11 +7,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "db:migrations:latest": "echo works",
+    "db:seed": "rm ./flair.db ; pnpm run db:migrations:latest"
+  },
   "dependencies": {
     "@hono/node-server": "^1.11.3",
+    "better-sqlite3": "^11.0.0",
     "hono": "^4.4.6",
     "kysely": "^0.27.3",
-    "sqlite3": "^5.1.7",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.10"
   }
 }

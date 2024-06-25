@@ -8,8 +8,8 @@ import { RootContainer } from "./navigation/RootContainer";
 import { Text } from "react-native";
 
 export default function App() {
-  const [appIsReady, setAppIsReady] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [isAppReady, setIsAppReady] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -20,12 +20,12 @@ export default function App() {
       } catch (e) {
         console.error(e);
       } finally {
-        setAppIsReady(true);
+        setIsAppReady(true);
       }
     })();
   }, []);
 
-  if (!appIsReady) {
+  if (!isAppReady) {
     return null;
   }
 
@@ -35,7 +35,7 @@ export default function App() {
     <NavigationContainer>
       <SafeAreaProvider>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {!loggedIn ? (
+          {!isLoggedIn ? (
             <Stack.Screen name="Auth">{() => <AuthMainScreen />}</Stack.Screen>
           ) : (
             <Stack.Screen name="MainContainer">

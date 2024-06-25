@@ -1,0 +1,16 @@
+{
+  "name": "@flair/ui",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    "./inputs": "./src/inputs/index.ts"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "expo": "*"
+  }
+}
