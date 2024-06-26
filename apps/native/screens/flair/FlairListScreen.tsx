@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
+import React from "react";
+import { ScrollView, View, Text, Image, StyleSheet } from "react-native";
 
 export function FlairListScreen() {
   return (
@@ -23,7 +23,7 @@ export function FlairListScreen() {
           <View style={styles.imageContainer}>
             <Image
               source={{
-                uri: 'https://reactnative.dev/img/tiny_logo.png',
+                uri: "https://reactnative.dev/img/tiny_logo.png"
               }}
               style={styles.image}
             />
@@ -37,7 +37,8 @@ export function FlairListScreen() {
           <Text style={styles.distance}>A 10 KM</Text>
           <Text style={styles.redFlags}>2 REDFLAGS</Text>
           <Text style={styles.description}>
-            Nous sommes sur Paris pendant 3 jours venez nous voir on est sympa ! On aime bien sortir et aller dans les bars...
+            Nous sommes sur Paris pendant 3 jours venez nous voir on est sympa !
+            On aime bien sortir et aller dans les bars...
           </Text>
           <Text style={styles.time}>il y a 2 min.</Text>
         </View>
@@ -49,78 +50,78 @@ export function FlairListScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   imagetagwrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
   tagimage: {
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: "flex-start",
+    justifyContent: "flex-start"
   },
   tagContainer: {
-    position : 'absolute',
-    zIndex : 2,
-    flexDirection: 'row',
+    position: "absolute",
+    zIndex: 2,
+    flexDirection: "row",
     padding: 15,
-    flexWrap: 'wrap',
+    flexWrap: "wrap"
   },
   infoContainerWrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
   tag: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
     padding: 5,
     marginRight: 5,
     borderRadius: 5,
-    marginBottom: 5,
+    marginBottom: 5
   },
   tagText: {
-    color: '#000',
+    color: "#000"
   },
   imageContainer: {
-    flex: 1,
+    flex: 1
   },
   image: {
-    zIndex : 1,
+    zIndex: 1,
     width: 350,
     height: 200,
-    resizeMode: 'cover',
-    borderRadius: 10,
+    resizeMode: "cover",
+    borderRadius: 10
   },
   infoContainer: {
     padding: 10,
     width: 350,
     height: 200,
-    backgroundColor: '#F0F0F0',
-    borderRadius : 10,
-    justifyContent : 'center',
+    backgroundColor: "#F0F0F0",
+    borderRadius: 10,
+    justifyContent: "center"
   },
 
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold"
   },
   usernames: {
-    color: '#888',
+    color: "#888"
   },
   distance: {
-    color: '#888',
+    color: "#888"
   },
   redFlags: {
-    color: 'red',
-    fontWeight: 'bold',
+    color: "red",
+    fontWeight: "bold"
   },
   description: {
     marginTop: 10,
-    fontSize: 16,
+    fontSize: 16
   },
   time: {
     marginTop: 5,
-    color: '#888',
-  },
+    color: "#888"
+  }
 });

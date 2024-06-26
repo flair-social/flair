@@ -5,7 +5,6 @@ import { loadAsync } from "expo-font";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AuthMainScreen } from "./screens/auth/AuthMainScreen";
 import { RootContainer } from "./navigation/RootContainer";
-import { Text } from "react-native";
 
 export default function App() {
   const [isAppReady, setIsAppReady] = useState(false);
@@ -20,6 +19,7 @@ export default function App() {
       } catch (e) {
         console.error(e);
       } finally {
+        setIsLoggedIn(true);
         setIsAppReady(true);
       }
     })();

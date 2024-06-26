@@ -1,9 +1,12 @@
 import Database from "better-sqlite3";
-import { Kysely, SqliteDialect, Generated } from "kysely";
+import { Kysely, SqliteDialect, Generated, ColumnType } from "kysely";
 
 export interface Tables {
   users: {
     id: Generated<number>;
+    username: string;
+    email: string;
+    password: string;
   };
   posts: {
     id: Generated<number>;
@@ -13,6 +16,11 @@ export interface Tables {
   };
   messages: {
     id: Generated<number>;
+  };
+  sessions: {
+    id: Generated<number>;
+    user_id: number;
+    created_at: Generated<ColumnType<Date, string>>;
   };
 }
 

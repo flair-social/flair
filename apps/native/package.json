@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@flair/ui": "workspace:*",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-native-fontawesome": "^0.3.2",
     "@react-navigation/bottom-tabs": "^6.5.20",
