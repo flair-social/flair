@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      pnpn:
+        specifier: ^0.0.1
+        version: 0.0.1
     devDependencies:
       eslint:
         specifier: ^8.57.0
@@ -26,9 +30,6 @@ importers:
 
   apps/native:
     dependencies:
-      '@flair/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       '@fortawesome/free-solid-svg-icons':
         specifier: ^6.5.2
         version: 6.5.2
@@ -100,18 +101,6 @@ importers:
       '@types/better-sqlite3':
         specifier: ^7.6.10
         version: 7.6.10
-
-  packages/ui:
-    dependencies:
-      expo:
-        specifier: '*'
-        version: 51.0.14(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(encoding@0.1.13)
-      react:
-        specifier: '*'
-        version: 18.2.0
-      react-native:
-        specifier: '*'
-        version: 0.74.2(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(encoding@0.1.13)(react@18.2.0)
 
 packages:
 
@@ -3692,6 +3681,9 @@ packages:
   pngjs@3.4.0:
     resolution: {integrity: sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==}
     engines: {node: '>=4.0.0'}
+
+  pnpn@0.0.1:
+    resolution: {integrity: sha512-hY8bh464EAPD9xfjZJUZLpA0phwV56CWXLs7Z6gxm4i8JT89+Vf3vjWW6BfSlNG1+p/vrFaF0bfoo+UaXrQUAA==}
 
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
@@ -9242,6 +9234,8 @@ snapshots:
       xmlbuilder: 15.1.1
 
   pngjs@3.4.0: {}
+
+  pnpn@0.0.1: {}
 
   possible-typed-array-names@1.0.0: {}
 

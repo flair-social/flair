@@ -24,5 +24,8 @@
         "typescript"
       ]
     }
+  },
+  "dependencies": {
+    "pnpn": "^0.0.1"
   }
 }
