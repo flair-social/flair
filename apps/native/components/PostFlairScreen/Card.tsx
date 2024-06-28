@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { TagList } from './TagList';
 
 interface CardProps {
@@ -13,6 +13,7 @@ interface CardProps {
   distance: string;
   time: string;
   imageUri: string;
+  onPress: () => void; 
 }
 
 export function Card({
@@ -25,10 +26,11 @@ export function Card({
   description,
   distance,
   time,
-  imageUri
+  imageUri,
+  onPress 
 }: CardProps) {
   return (
-    <View style={styles.cardContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.cardContainer}>
       <View style={styles.imageWrapper}>
         <Image source={{ uri: imageUri }} style={styles.image} />
         <TagList tags={tags} />
@@ -42,7 +44,7 @@ export function Card({
         <Text style={styles.description}>{description}</Text>
         <Text style={styles.time}>{time}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
   },
   infoContainer: {
     padding: 10,
-    backgroundColor: "#F0F0F0", // Ajout de la couleur de fond
+    backgroundColor: "#F0F0F0",
   },
   title: {
     fontSize: 18,

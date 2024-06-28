@@ -1,8 +1,15 @@
 import React from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
 import { Card } from "../../components/PostFlairScreen/Card";
+import { useNavigation } from "@react-navigation/native";
 
 export function FlairListScreen() {
+  const navigation = useNavigation();
+
+  const handleCardPress = () => {
+    navigation.navigate('PostStack');
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.infoContainerWrapper}>
@@ -17,6 +24,7 @@ export function FlairListScreen() {
           distance="A 10 KM"
           time="il y a 2 min."
           imageUri="https://reactnative.dev/img/tiny_logo.png"
+          onPress={handleCardPress}
         />
       </View>
     </ScrollView>
