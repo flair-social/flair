@@ -14,7 +14,7 @@ export class UsersController {
   constructor(private readonly userRepository: UsersRepository) {}
 
   async register(ctx: ControllerPayload) {
-    const bodyPayload = await validate(
+    const inputs = await validate(
       ctx.body,
       z.object({
         email: z.string().trim().email(),
@@ -24,8 +24,8 @@ export class UsersController {
     );
 
     const [isEmailInUse, isUsernameTaken] = await Promise.all([
-      this.userRepository.existsByEmail(bodyPayload.email),
-      this.userRepository.existsByUsername(bodyPayload.username)
+      this.userRepository.existsByEmail(inputs.email),
+      this.userRepository.existsByUsername(inputs.username)
     ]);
 
     if (isEmailInUse) {
@@ -36,11 +36,11 @@ export class UsersController {
       throw ApplicativeError.Conflict("Username already taken");
     }
 
-    const hashedPassword = await hash(bodyPayload.password, SALT_ROUNDS_AMOUNT);
+    const hashedPassword = await hash(inputs.password, SALT_ROUNDS_AMOUNT);
 
     await this.userRepository.insert({
-      email: bodyPayload.email,
-      username: bodyPayload.username,
+      email: inputs.email,
+      username: inputs.username,
       password: hashedPassword
     });
   }

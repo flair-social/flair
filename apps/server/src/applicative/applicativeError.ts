@@ -19,6 +19,14 @@ export class ApplicativeError extends Error {
     return new ApplicativeError(message ?? "Bad request", 400);
   }
 
+  static Unauthorized(message?: string) {
+    return new ApplicativeError(message ?? "Unauthorized", 401);
+  }
+
+  static NotFound(message?: string) {
+    return new ApplicativeError(message ?? "Not found", 404);
+  }
+
   static Conflict(message?: string) {
     return new ApplicativeError(message ?? "Conflict", 409);
   }

@@ -1,4 +1,4 @@
-import { Repository } from "./repository.js";
+import { Repository } from "../database/repository.js";
 import { Kysely } from "kysely";
 import { Tables } from "../database/index.js";
 

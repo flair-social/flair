@@ -1,5 +1,4 @@
-import Database from "better-sqlite3";
-import { Kysely, SqliteDialect, Generated, ColumnType } from "kysely";
+import { Generated, ColumnType } from "kysely";
 
 export interface Tables {
   users: {
@@ -20,12 +19,8 @@ export interface Tables {
   sessions: {
     id: Generated<number>;
     user_id: number;
+    active: boolean;
     created_at: Generated<ColumnType<Date, string>>;
+    last_used_at: Generated<ColumnType<Date, string>>;
   };
 }
-
-const dialect = new SqliteDialect({
-  database: new Database("../../flair.db", { verbose: console.log })
-});
-
-export const db = new Kysely<Tables>({ dialect });
