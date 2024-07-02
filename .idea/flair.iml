@@ -6,9 +6,11 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
+    <content url="file://$MODULE_DIR$/node_modules/@pnpm/find-workspace-dir" />
     <content url="file://$MODULE_DIR$/node_modules/better-sqlite3" />
     <content url="file://$MODULE_DIR$/node_modules/hono" />
     <content url="file://$MODULE_DIR$/node_modules/kysely" />
+    <content url="file://$MODULE_DIR$/node_modules/mysql2" />
     <content url="file://$MODULE_DIR$/node_modules/react-native" />
     <content url="file://$MODULE_DIR$/node_modules/zod" />
     <orderEntry type="inheritedJdk" />

@@ -1,22 +1,22 @@
 import { sign, verify } from "hono/jwt";
-import { ApplicativeError } from "../applicative/applicativeError.js";
+import { ApplicativeError } from "../core/applicative/applicativeError.js";
 
 export class JwtService {
   constructor(
-    private readonly publicKey: string,
-    private readonly secretKey: string
+    private readonly publicKey: string
+    // private readonly secretKey: string
   ) {}
 
-  sign(sessionId: bigint) {
-    return sign({ sessionId }, this.secretKey, "HS256");
+  sign(sessionId: number) {
+    return sign({ sessionId }, this.publicKey);
   }
 
-  async decode(token: string): Promise<bigint> {
-    let sessionId: bigint | undefined;
+  async decode(token: string): Promise<number> {
+    let sessionId: number | undefined;
 
     try {
-      const payload = await verify(token, this.publicKey, "HS256");
-      if (payload.sessionId && typeof payload.sessionId === "bigint") {
+      const payload = await verify(token, this.publicKey);
+      if (payload.sessionId && typeof payload.sessionId === "number") {
         sessionId = payload.sessionId;
       }
     } catch (e) {

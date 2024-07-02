@@ -5,17 +5,22 @@ import {
   USERNAME_REGEX
 } from "../const.js";
 import { validate } from "../middleware/validate.js";
-import { ControllerPayload } from "./controller.js";
 import { UsersRepository } from "../repositories/users.repository.js";
-import { ApplicativeError } from "../applicative/applicativeError.js";
+import { ApplicativeError } from "../core/applicative/applicativeError.js";
 import { hash } from "bcrypt";
+import { ApplicativeResponse } from "../core/applicative/applicativeResponse.js";
+import { BaseContext } from "../index.js";
 
 export class UsersController {
-  constructor(private readonly userRepository: UsersRepository) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
-  async register(ctx: ControllerPayload) {
+  async test(ctx: BaseContext) {
+    ctx.set("response", ApplicativeResponse.Ok({ message: "registered" }));
+  }
+
+  async register(ctx: BaseContext) {
     const inputs = await validate(
-      ctx.body,
+      await ctx.req.json(),
       z.object({
         email: z.string().trim().email(),
         username: z.string().trim().regex(USERNAME_REGEX),
@@ -24,8 +29,8 @@ export class UsersController {
     );
 
     const [isEmailInUse, isUsernameTaken] = await Promise.all([
-      this.userRepository.existsByEmail(inputs.email),
-      this.userRepository.existsByUsername(inputs.username)
+      this.usersRepository.existsByEmail(inputs.email),
+      this.usersRepository.existsByUsername(inputs.username)
     ]);
 
     if (isEmailInUse) {
@@ -38,10 +43,12 @@ export class UsersController {
 
     const hashedPassword = await hash(inputs.password, SALT_ROUNDS_AMOUNT);
 
-    await this.userRepository.insert({
+    await this.usersRepository.insert({
       email: inputs.email,
       username: inputs.username,
       password: hashedPassword
     });
+
+    ctx.set("response", ApplicativeResponse.Ok({ message: "registered" }));
   }
 }

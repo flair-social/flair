@@ -4,6 +4,9 @@
     "declaration": false,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "types": ["@types/node"]
+    "types": ["@types/node"],
+    "paths": {
+      "#core/*": ["./src/core/*"]
+    }
   },
 }
